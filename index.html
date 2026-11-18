@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIRING - Wisata Kolam Renang Sumberingin</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* PENGATURAN DASAR */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --hijau: #176b4d;
+            --hijau-tua: #104c37;
+            --hijau-gelap: #0b3829;
+            --hijau-muda: #eaf5ef;
+            --putih: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #263b32;
+            background: #ffffff;
+            line-height: 1.7;
+        }
+
+        /* HEADER / NAVBAR */
+        header {
+            width: 100%;
+            background: #ffffff;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .logo h2 {
+            color: var(--hijau-tua);
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #263b32;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--hijau);
+        }
+
+        /* TOMBOL HUBUNGI NAVBAR */
+        .nav-cta {
+            background: var(--hijau);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--hijau-tua);
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--hijau-tua);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(8, 45, 32, 0.65),
+                    rgba(8, 45, 32, 0.65)),
+                url('assets/sumberingin.png');
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            padding: 120px 20px 60px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        /* TOMBOL */
+        .btn {
+            display: inline-block;
+            padding: 13px 30px;
+            background: white;
+            color: var(--hijau-tua);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #dff2e6;
+            transform: translateY(-3px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn-primary {
+            background: var(--hijau);
+            color: white;
+        }
+
+        .hero-buttons .btn-primary:hover {
+            background: #21865f;
+        }
+
+        .hero-buttons .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .hero-buttons .btn-outline:hover {
+            background: white;
+            color: var(--hijau-tua);
+        }
+
+        /* PENGATURAN SECTION */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            color: var(--hijau);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #6b7c73;
+            font-size: 14px;
+        }
+
+        /* TENTANG SIRING */
+        .tentang {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .tentang img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .tentang-text h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--hijau);
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .tentang-text p {
+            color: #65756c;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* FITUR UNGGULAN */
+        .fitur-section {
+            background: var(--hijau-muda);
+        }
+
+        .fitur-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .fitur-card {
+            background: var(--hijau);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 16px;
+            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .fitur-card:hover {
+            background: var(--hijau-tua);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .fitur-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .fitur-card h3 {
+            color: var(--putih);
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .fitur-card p {
+            color: #ffffff;
+            font-size: 13px;
+        }
+
+        /* TESTIMONI */
+        .testimoni-section {
+            background: #f8fbf9;
+        }
+
+        .testimoni-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .testimoni-card {
+            background: var(--hijau);
+            padding: 28px 24px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .testimoni-card:hover {
+            background: var(--hijau-tua);
+            transform: translateY(-7px);
+        }
+
+        .testimoni-card p {
+            color: #ffffff;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        .testimoni-card h3 {
+            color: var(--putih);
+            font-size: 16px;
+        }
+
+        .testimoni-card span {
+            color: #d8eee2;
+            font-size: 12px;
+        }
+
+        /* DESAIN WEBSITE */
+        .desain-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .desain-card {
+            background: white;
+            border-radius: 16px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .desain-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .desain-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid #e5ece7;
+        }
+
+        .desain-card h3 {
+            color: var(--hijau);
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .desain-card p {
+            color: #65756c;
+            font-size: 13px;
+        }
+
+        /* CTA / HUBUNGI KAMI */
+        .cta {
+            background: var(--hijau-tua);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+        }
+
+        .cta .btn {
+            color: var(--hijau-tua);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--hijau-gelap);
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: #d4e6dc;
+        }
+
+        /* RESPONSIVE TABLET */
+        @media (max-width: 1000px) {
+            .fitur-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tentang {
+                gap: 30px;
+            }
+        }
+
+        /* RESPONSIVE HP */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+                padding: 14px;
+                border-top: 1px solid #eeeeee;
+            }
+
+            nav a.nav-cta {
+                width: auto;
+                margin: 12px auto;
+                padding: 10px 25px;
+                border-radius: 25px;
+            }
+
+            .tentang {
+                grid-template-columns: 1fr;
+            }
+
+            .tentang img {
+                height: 280px;
+            }
+
+            .section-title h2,
+            .tentang-text h2 {
+                font-size: 30px;
+            }
+        }
+
+        /* RESPONSIVE HP KECIL */
+        @media (max-width: 480px) {
+            section {
+                padding: 65px 6%;
+            }
+
+            .fitur-container,
+            .testimoni-container,
+            .desain-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .cta h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="Logo SIRING">
+            <h2>SIRING</h2>
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">☰</div>
+
+        <nav id="navbar">
+            <a href="#beranda">Beranda</a>
+            <a href="#tentang">Tentang</a>
+            <a href="#fitur">Fitur</a>
+            <a href="#testimoni">Testimoni</a>
+            <a href="#galeri">Galeri</a>
+
+            <a href="https://wa.me/6288989098976?text=Halo%20SIRING%2C%20saya%20ingin%20mengetahui%20informasi%20wisata%20Kolam%20Renang%20Sumberingin."
+                class="nav-cta" target="_blank" rel="noopener noreferrer">
+                Hubungi Kami
+            </a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+
+            <h1>SIRING (SISTEM INFORMASI WISATA SUMBERINGIN)</h1>
+
+            <p>
+                PESAN TIKET LEBIH MUDAH DENGAN SIRING
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#fitur" class="btn btn-primary">
+                    Temukan Kemudahan Bersama SIRING →
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TENTANG SIRING -->
+    <section id="tentang">
+        <div class="tentang">
+
+            <img src="assets/beranda.png" alt="Wisata Kolam Renang Sumberingin">
+
+            <div class="tentang-text">
+                <h2>Tentang SIRING</h2>
+
+                <p>
+                    SIRING merupakan sebuah sistem informasi yang dirancang
+                    untuk mempermudah pengunjung dalam mendapatkan informasi
+                    mengenai Wisata Kolam Renang Sumberingin.
+                </p>
+
+                <p>
+                    Melalui SIRING, pengunjung dapat mengenal informasi wisata
+                    serta mengetahui berbagai fitur yang disediakan dalam
+                    satu platform.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FITUR UNGGULAN -->
+    <section class="fitur-section" id="fitur">
+
+        <div class="section-title">
+            <h2>Fitur Unggulan</h2>
+
+            <p>
+                Berbagai kemudahan yang diperkenalkan melalui SIRING
+            </p>
+        </div>
+
+        <div class="fitur-container">
+
+            <div class="fitur-card">
+                <div class="fitur-icon">🎟️</div>
+                <h3>Pemesanan Tiket Online</h3>
+                <p>
+                    Memberikan kemudahan dalam melakukan
+                    pemesanan tiket wisata secara online.
+                </p>
+            </div>
+
+            <div class="fitur-card">
+                <div class="fitur-icon">💳</div>
+                <h3>Informasi Pembayaran</h3>
+                <p>
+                    Menyediakan informasi mengenai proses
+                    pembayaran tiket wisata.
+                </p>
+            </div>
+
+            <div class="fitur-card">
+                <div class="fitur-icon">📱</div>
+                <h3>E-Tiket Berupa Barcode</h3>
+                <p>
+                    Memperkenalkan tiket digital dengan barcode
+                    untuk proses pemeriksaan tiket.
+                </p>
+            </div>
+
+            <div class="fitur-card">
+                <div class="fitur-icon">ℹ️</div>
+                <h3>Informasi Wisata</h3>
+                <p>
+                    Membantu pengunjung mengetahui informasi
+                    mengenai Wisata Sumberingin.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section class="testimoni-section" id="testimoni">
+
+        <div class="section-title">
+            <h2>Testimoni Pengguna</h2>
+            <p>Contoh tampilan testimoni untuk website SIRING</p>
+        </div>
+
+        <div class="testimoni-container">
+
+            <div class="testimoni-card">
+                <p>
+                    "Tampilan website SIRING sederhana sehingga
+                    informasi wisata mudah ditemukan."
+                </p>
+                <h3>Zaky</h3>
+                <span>⭐⭐⭐⭐⭐ (5.0/5)</span>
+            </div>
+
+            <div class="testimoni-card">
+                <p>
+                    "Fitur pemesanan tiket online dapat membantu
+                    pengunjung melakukan pemesanan dengan lebih praktis."
+                </p>
+                <h3>Vano</h3>
+                <span>⭐⭐⭐⭐☆ (4.0/5) </span>
+            </div>
+
+            <div class="testimoni-card">
+                <p>
+                    "Informasi dan fitur yang tersedia tersusun
+                    dengan rapi dan mudah dipahami."
+                </p>
+                <h3>Jhon</h3>
+                <span>⭐⭐⭐⭐☆ (4.0/5) </span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DESAIN WEBSITE -->
+    <section id="galeri">
+
+        <div class="section-title">
+            <h2>Galeri</h2>
+            <p>
+                Berikut merupakan tampilan beberapa fitur
+                yang tersedia pada website SIRING
+            </p>
+        </div>
+
+        <div class="desain-container">
+
+            <div class="desain-card">
+                <img src="assets/pemesanan.png" alt="Pemesanan Tiket Online">
+                <h3>Pemesanan Tiket Online</h3>
+                <p>
+                    Memudahkan pengunjung untuk memesan tiket wisata secara online tanpa harus datang langsung ke
+                    lokasi.
+                </p>
+            </div>
+
+            <div class="desain-card">
+                <img src="assets/pembayaran.png" alt="Informasi Pembayaran">
+                <h3>Informasi Pembayaran</h3>
+                <p>
+                    Memberikan informasi mengenai proses pembayaran tiket agar pengunjung dapat melakukan transaksi
+                    dengan mudah.
+                </p>
+            </div>
+
+            <div class="desain-card">
+                <img src="assets/eticket.png" alt="E-Tiket Berupa Barcode">
+                <h3>E-Tiket Berupa Barcode</h3>
+                <p>
+                    Menyediakan tiket digital sebagai bukti pemesanan yang dapat digunakan saat memasuki area wisata.
+                </p>
+            </div>
+
+            <div class="desain-card">
+                <img src="assets/informasi.png" alt="Informasi Wisata">
+                <h3>Informasi Wisata</h3>
+                <p>
+                    Membantu pengunjung mengetahui informasi mengenai wisata, fasilitas, dan hal-hal yang tersedia di
+                    Kolam Renang Sumberingin. </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HUBUNGI KAMI -->
+    <section class="cta">
+
+        <h2>Ingin Mengetahui Lebih Lanjut?</h2>
+
+        <p>
+            Hubungi kami melalui WhatsApp untuk mendapatkan informasi
+            mengenai sistem SIRING dan Wisata Kolam Renang Sumberingin.
+        </p>
+
+        <a href="https://wa.me/6288989098976?text=Halo%20SIRING%2C%20saya%20ingin%20mengetahui%20informasi%20wisata%20Kolam%20Renang%20Sumberingin."
+            class="btn" target="_blank" rel="noopener noreferrer">
+            Hubungi Kami
+        </a>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; <span id="tahun"></span> SIRING |
+            Wisata Kolam Renang Sumberingin
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // MENU NAVIGASI HP
+        const menuToggle = document.getElementById("menuToggle");
+        const navbar = document.getElementById("navbar");
+
+        menuToggle.addEventListener("click", function () {
+            navbar.classList.toggle("active");
+        });
+
+        // TUTUP MENU SETELAH MEMILIH NAVIGASI
+        const navLinks = document.querySelectorAll("#navbar a");
+
+        navLinks.forEach(function (link) {
+            link.addEventListener("click", function () {
+                navbar.classList.remove("active");
+            });
+        });
+
+        // TAHUN OTOMATIS
+        document.getElementById("tahun").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>
